@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import PublicPage from './components/publicPage/PublicPage'
+import PrivatePage from './components/privatePage/PrivatePage'
+
+import { clearLoginModalErrorUserAction } from './redux/actions/userActions';
+
+import './css/main.css'
+
+const selectUser = state => state.userReducer.user
+
+const App = () => {
+  const user = useSelector(selectUser)
+
+  const dispatch = useDispatch()
+
+  dispatch(clearLoginModalErrorUserAction())
+
+
+  const app = 
+    <div>
+      {
+        user? 
+        <PrivatePage/> : 
+        <PublicPage />
+      }
     </div>
-  );
+
+  return app
 }
 
-export default App;
+
+export default App
