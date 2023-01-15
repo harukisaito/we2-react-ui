@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 const OpenLoginModalButton = (props) => {
     const openLoginModalButton = 
         <Button 
+          id="loginButton"
           variant="outlined"
           onClick={props.openModal} >
             Login

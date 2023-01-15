@@ -30,13 +30,12 @@ const PublicPage = () => {
 
           <LoginModal 
             closeModal={closeModal} 
-            showModal={showModal}>
+            showModal={showModal} >
           </LoginModal>
 
           <Grid item xs={2} id="sidebar-top">
             <OpenLoginModalButton
-              openModal={openModal}
-              id="loginButton">
+              openModal={openModal} >
             </OpenLoginModalButton>
           </Grid>
 

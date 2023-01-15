@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 import PublicPage from './components/publicPage/PublicPage'
-import PrivatePage from './components/privatePage/PrivatePage'
+import HomePageContainer from './components/privatePage/HomePageContainer'
 
 import { clearLoginModalErrorUserAction } from './redux/actions/userActions';
 
@@ -17,12 +17,11 @@ const App = () => {
 
   dispatch(clearLoginModalErrorUserAction())
 
-
   const app = 
     <div>
       {
         user? 
-        <PrivatePage/> : 
+        <HomePageContainer/> : 
         <PublicPage />
       }
     </div>

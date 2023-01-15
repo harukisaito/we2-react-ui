@@ -1,8 +1,12 @@
-import { login as loginUserApi } from '../../api/userApi'
+import { login as loginAPI } from '../../api/userApi'
+import { getAllUsers as getAllUsersAPI } from '../../api/userApi'
+import { updateUser as updateUserAPI } from '../../api/userApi'
+import { createUser as createUserAPI } from '../../api/userApi'
+import { deleteUser as deleteUserAPI } from '../../api/userApi'
 
 const loginUserAction = (userName, password) => {
   const authenticateUser = (dispatchToReducer) => {
-    const loginPromise = loginUserApi(userName, password)
+    const loginPromise = loginAPI(userName, password)
     
     const reject = (error) => {
       const action = {
@@ -13,19 +17,20 @@ const loginUserAction = (userName, password) => {
       dispatchToReducer(action)
     }
 
-    const fulfilled = (user) => {
+    const fulfilled = (response) => {
       let action 
 
-      if(!user) {
+      if(!response) {
         action = {
           type: "ERROR",
           payload: 'Wrong Credentials'
         }
       }
       else {
+
         action = {
           type: "AUTHENTICATE_USER",
-          payload: user
+          payload: response
         }
       }
 
@@ -64,8 +69,178 @@ const clearLoginModalErrorUserAction = () => {
   return clearLoginModalError
 }
 
+const getAllUsersAction = (token) => {
+  const getAllUsers = (dispatchToReducer) => {
+    const getAllUsersPromise = getAllUsersAPI(token)
+    
+    const reject = (error) => {
+      const action = {
+        type: "ERROR",
+        payload: error
+      }
+
+      dispatchToReducer(action)
+    }
+
+    const fulfilled = (users) => {
+      let action 
+
+      if(!users) {
+        action = {
+          type: "ERROR",
+          payload: 'Something went wrong...'
+        }
+      }
+      else {
+        action = {
+          type: "GET_ALL_USERS",
+          payload: users
+        }
+      }
+
+      dispatchToReducer(action)
+    }
+
+    getAllUsersPromise.then(fulfilled, reject)
+  }
+
+  return getAllUsers
+}
+
+const removeAllUsersAction = () => {
+  const removeUsers = (dispatchToReducer) => {
+    const action = {
+      type: "REMOVE_ALL_USERS",
+      payload: null
+    }
+
+    dispatchToReducer(action)
+  }
+
+  return removeUsers
+}
+
+const updateUserAction = (token, user) => {
+  const updateUser = (dispatchToReducer) => {
+    const updateUserPromise = updateUserAPI(token, user)
+    
+    const reject = (error) => {
+      const action = {
+        type: "ERROR",
+        payload: error
+      }
+
+      dispatchToReducer(action)
+    }
+
+    const fulfilled = (user) => {
+      let action 
+
+      if(!user) {
+        action = {
+          type: "ERROR",
+          payload: 'Something went wrong...'
+        }
+      }
+      else {
+        action = {
+          type: "UPDATE_USER",
+          payload: user
+        }
+      }
+      
+      dispatchToReducer(action)
+    }
+
+    updateUserPromise.then(fulfilled, reject)
+  }
+
+  return updateUser
+}
+
+const createUserAction = (token, user) => {
+  const createUser = (dispatchToReducer) => {
+    const createUserPromise = createUserAPI(token, user)
+    
+    const reject = (error) => {
+      const action = {
+        type: "ERROR",
+        payload: error
+      }
+
+      dispatchToReducer(action)
+    }
+
+    const fulfilled = (user) => {
+      let action 
+
+      if(!user) {
+        action = {
+          type: "ERROR",
+          payload: 'Something went wrong...'
+        }
+      }
+      else {
+        action = {
+          type: "CREATE_USER",
+          payload: user
+        }
+      }
+
+      dispatchToReducer(action)
+    }
+
+    createUserPromise.then(fulfilled, reject)
+  }
+
+  return createUser
+}
+
+const deleteUserAction = (token, user) => {
+  const deleteUser = (dispatchToReducer) => {
+    const deleteUserPromise = deleteUserAPI(token, user)
+    
+    const reject = (error) => {
+      const action = {
+        type: "ERROR",
+        payload: error
+      }
+
+      dispatchToReducer(action)
+    }
+
+    const fulfilled = (user) => {
+      let action 
+
+      if(!user) {
+        action = {
+          type: "ERROR",
+          payload: 'Something went wrong...'
+        }
+      }
+      else {
+        action = {
+          type: "DELETE_USER",
+          payload: user
+        }
+      }
+
+      dispatchToReducer(action)
+    }
+
+    deleteUserPromise.then(fulfilled, reject)
+  }
+
+  return deleteUser
+}
+
 export {
   loginUserAction,
   logoutUserAction,
-  clearLoginModalErrorUserAction
+  clearLoginModalErrorUserAction,
+  getAllUsersAction,
+  removeAllUsersAction,
+  updateUserAction,
+  createUserAction,
+  deleteUserAction
 }
