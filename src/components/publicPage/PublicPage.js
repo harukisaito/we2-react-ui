@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 
 import OpenLoginModalButton from './OpenLoginModalButton';
 import LoginModal from './LoginModal';
-import { clearLoginModalErrorUserAction } from '../../redux/actions/userActions';
+import { clearLoginModalErrorUserAction } from '../privatePage/content/user/userActions';
 
 
 
@@ -23,7 +23,7 @@ const PublicPage = () => {
     dispatch(clearLoginModalErrorUserAction())
   }
 
-  const publicPage = 
+  return(
     <div 
       id="LandingPage">
         <Grid container >
@@ -52,8 +52,7 @@ const PublicPage = () => {
 
         </Grid>
     </div>
-
-  return publicPage
+  )
 }
 
 

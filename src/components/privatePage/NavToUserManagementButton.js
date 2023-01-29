@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 
 import Button from '@mui/material/Button';
 
-import {getAllUsersAction} from '../../redux/actions/userActions'
+import {getAllUsersAction} from './content/user/userActions'
+import { displayUserManagementAction } from './displayActions';
 
 const selectToken = state => state.userReducer.token
 
@@ -15,16 +16,18 @@ const NavToUserManagementButton = () => {
 
   const navToUserManagement = () => {
     dispatch(getAllUsersAction(token))
+    dispatch(displayUserManagementAction())
   }
 
-  const navToUserManagementButton = 
+
+  
+  return (
     <Button 
       id="OpenUserManagementPageButton"
       onClick={navToUserManagement} >
         User Management
     </Button>
-
-  return navToUserManagementButton
+  )
 }
 
 export default NavToUserManagementButton 

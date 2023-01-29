@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import Button from '@mui/material/Button';
 
-import {loginUserAction} from '../../redux/actions/userActions'
+import {loginUserAction} from '../privatePage/content/user/userActions'
 
 
 const LoginButton = (props) => {
@@ -13,15 +13,14 @@ const LoginButton = (props) => {
     dispatch(loginUserAction(props.userName, props.password))
   }
 
-  const loginButton = 
+  return (
     <Button 
       id="PerformLoginButton"
       variant="contained"
       onClick={loginWithData} >
         Login
     </Button>
-
-  return loginButton
+  )
 }
 
 export default LoginButton 

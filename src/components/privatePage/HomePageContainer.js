@@ -7,6 +7,8 @@ import LogoutButton from './LogoutButton'
 import NavToUserManagementButton from './NavToUserManagementButton';
 import HomeContentContainer from './HomeContentContainer';
 import NavToHomePageButton from './NavToHomePageButton';
+import NavToApplicationsButton from './NavToApplicationsButton';
+import NavToCoursesButton from './NavToCoursesButton';
 
 
 
@@ -16,7 +18,7 @@ const HomePageContainer = () => {
 
   const isAdmin = useSelector(selectisAdmin)
 
-  const homePageContainer = 
+  return (
     <div 
       id="StartPage">
         <Grid container >
@@ -36,6 +38,8 @@ const HomePageContainer = () => {
             <NavToUserManagementButton /> : 
             null
           }
+          <NavToApplicationsButton /> 
+          <NavToCoursesButton /> 
         </Grid>
 
         <Grid item xs={10} id="main-content-bottom">
@@ -44,8 +48,7 @@ const HomePageContainer = () => {
 
         </Grid>
     </div>
-
-  return homePageContainer
+  )
 }
 
 

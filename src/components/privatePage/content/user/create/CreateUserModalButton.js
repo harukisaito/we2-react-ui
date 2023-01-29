@@ -2,15 +2,15 @@ import * as React from 'react';
 
 import Button from '@mui/material/Button';
 
-const OpenLoginModalButton = (props) => {
+const OpenCreateUserModalButton = (props) => {
   return (
     <Button
-      id="OpenLoginDialogButton"
+      id="UserManagementPageCreateComponent"
       variant="outlined"
       onClick={props.openModal} >
-      Login
+      Create User
     </Button>
   )
 }
 
-export default OpenLoginModalButton 
+export default OpenCreateUserModalButton 

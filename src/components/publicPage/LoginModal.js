@@ -27,7 +27,9 @@ const LoginModal = (props) => {
     setPassword(event.target.value)
   }
 
-  const loginModal = 
+
+
+  return (
     <Modal 
       id="LoginDialog"
       open={props.showModal}
@@ -82,8 +84,7 @@ const LoginModal = (props) => {
 
       </Box>
     </Modal>
-
-  return loginModal
+  )
 }
 
 export default LoginModal

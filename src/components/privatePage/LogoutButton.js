@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import Button from '@mui/material/Button';
 
-import {logoutUserAction} from '../../redux/actions/userActions'
+import {logoutUserAction} from './content/user/userActions'
 
 
 const LogoutButton = () => {
@@ -13,15 +13,16 @@ const LogoutButton = () => {
     dispatch(logoutUserAction())
   }
 
-  const logoutButton = 
+
+
+  return (
     <Button 
       id="LogoutButton"
       variant="outlined"
       onClick={logout} >
         Logout
     </Button>
-
-  return logoutButton
+  )
 }
 
 export default LogoutButton 

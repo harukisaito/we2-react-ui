@@ -1,13 +1,11 @@
 import * as React from 'react';
 
 const HomeContent = () => {
-
-  const homeContent = 
+  return (
     <div >
         Hello Home Page here.
     </div>
-
-  return homeContent
+  )
 }
 
 
